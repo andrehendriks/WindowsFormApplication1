@@ -37,7 +37,7 @@ namespace WindowsFormsApplication1
             // The COM port named will be the first COM port that is checked.
             //string COM12 = null;
             
-            connector.ConnectScan("COM31");
+            connector.ConnectScan("COM40");
             //Thread.Sleep(45000);
             if (true)
             {
@@ -61,10 +61,11 @@ namespace WindowsFormsApplication1
         
         private void OnDeviceFound(object sender, EventArgs e)
         {
-            Console.WriteLine("Device Found!:");
+            Label lb_value = new Label();
+            lb_value.Text = "Device Found!:";
             //Connector.DeviceEventArgs de = (Connector.DeviceEventArgs)e;
             //MessageBox.Show("Device found: " + de.Device.PortName, "Connect");
-            
+            System.Media.SystemSounds.Beep.Play();
         }
 
         private void OnDeviceFail(object sender, EventArgs e)
@@ -79,15 +80,16 @@ namespace WindowsFormsApplication1
             pictureBox1.Image = Properties.Resources.connected_v1;
             Connector.DeviceEventArgs de = (Connector.DeviceEventArgs)e;
             Console.WriteLine("Device found: " + de.Device.PortName, "Connect");
-            
+            System.Media.SystemSounds.Beep.Play();
             de.Device.DataReceived += new EventHandler(OnDataReceived);
         }
 
         private void OnDataReceived(object sender, EventArgs e)
         {
             Device d = (Device)sender;
-            TextBox lb_value = new TextBox();
+            Label lb_value = new Label();
             lb_value.Text = "datarecieved";
+            System.Media.SystemSounds.Beep.Play();
             Device.DataEventArgs de = (Device.DataEventArgs)e;
             NeuroSky.ThinkGear.DataRow[] tempDataRowArray = de.DataRowArray;
 
@@ -121,15 +123,15 @@ namespace WindowsFormsApplication1
             {
                 if (tgParser.ParsedData[i].ContainsKey("Attention"))
                 {
-
-                    lb_value.AppendText("Att Value:" + tgParser.ParsedData[i]["Attention"]);
-                    Console.WriteLine("Att Value:" + tgParser.ParsedData[i]["Attention"]);
+                    System.Media.SystemSounds.Exclamation.Play();
+                    lb_value.Text = "Att Value:" + tgParser.ParsedData[i]["Attention"];
+                   // Console.WriteLine("Att Value:" + tgParser.ParsedData[i]["Attention"]);
                 }
                 if (tgParser.ParsedData[i].ContainsKey("Meditation"))
                 {
-
-                    lb_value.AppendText("Med Value:" + tgParser.ParsedData[i]["Meditation"]);
-                    Console.WriteLine("Med Value:" + tgParser.ParsedData[i]["Meditation"]);
+                    System.Media.SystemSounds.Asterisk.Play();
+                    lb_value.Text = "Med Value:" + tgParser.ParsedData[i]["Meditation"];
+                   // Console.WriteLine("Med Value:" + tgParser.ParsedData[i]["Meditation"]);
                 }
             }
         }

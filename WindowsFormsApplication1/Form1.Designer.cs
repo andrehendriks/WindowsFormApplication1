@@ -34,7 +34,7 @@
             this.radio_att = new System.Windows.Forms.RadioButton();
             this.radio_me = new System.Windows.Forms.RadioButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lb_value = new System.Windows.Forms.RichTextBox();
+            this.lb_value = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,6 +43,7 @@
             this.progressBar2.Location = new System.Drawing.Point(0, 239);
             this.progressBar2.Name = "progressBar2";
             this.progressBar2.Size = new System.Drawing.Size(284, 23);
+            this.progressBar2.Step = 20;
             this.progressBar2.TabIndex = 0;
             // 
             // btn_connect
@@ -98,11 +99,11 @@
             // 
             // lb_value
             // 
-            this.lb_value.Location = new System.Drawing.Point(0, 178);
+            this.lb_value.AutoSize = true;
+            this.lb_value.Location = new System.Drawing.Point(11, 198);
             this.lb_value.Name = "lb_value";
-            this.lb_value.Size = new System.Drawing.Size(284, 55);
+            this.lb_value.Size = new System.Drawing.Size(0, 13);
             this.lb_value.TabIndex = 7;
-            this.lb_value.Text = "";
             // 
             // Form1
             // 
@@ -131,7 +132,7 @@
         private System.Windows.Forms.RadioButton radio_att;
         private System.Windows.Forms.RadioButton radio_me;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.RichTextBox lb_value;
+        private System.Windows.Forms.Label lb_value;
     }
 }
 
