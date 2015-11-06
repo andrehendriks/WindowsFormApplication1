@@ -57,8 +57,12 @@ namespace WindowsFormsApplication1
             
         }
 
-        
-        
+        private void btn_disconnect_Click(object sender, EventArgs e)
+        {
+            connector.Close();
+            progressBar2.Value = 0;
+        }
+
         private void OnDeviceFound(object sender, EventArgs e)
         {
             Label lb_value = new Label();
@@ -66,6 +70,8 @@ namespace WindowsFormsApplication1
             //Connector.DeviceEventArgs de = (Connector.DeviceEventArgs)e;
             //MessageBox.Show("Device found: " + de.Device.PortName, "Connect");
             System.Media.SystemSounds.Beep.Play();
+            Form3 dataform1 = new Form3();
+            dataform1.Show();
         }
 
         private void OnDeviceFail(object sender, EventArgs e)
@@ -168,11 +174,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void btn_disconnect_Click(object sender, EventArgs e)
-        {
-            connector.Close();
-            progressBar2.Value = 0;
-        }
+        
 
         private void OnDeviceDisconnected(object sender, EventArgs e)
         {
